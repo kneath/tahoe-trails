@@ -141,7 +141,7 @@ async function main() {
   // Fit a box into the part of the screen not covered by panels.
   function frameBox(
     box: THREE.Box3 | THREE.Vector3[],
-    pad = { left: 380, right: 400, top: 60, bottom: 90 },
+    pad = { left: 380, right: 400, top: 80, bottom: 90 },
     az = flight ? flight.to.azimuth : controls.getAzimuthalAngle(),
     polar = flight ? flight.to.polar : controls.getPolarAngle(),
   ) {
