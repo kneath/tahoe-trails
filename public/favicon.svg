@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <filter id="wobble" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="2" seed="4" />
+      <feDisplacementMap in="SourceGraphic" scale="2.2" />
+    </filter>
+    <radialGradient id="lake" cx="0.42" cy="0.38" r="0.75">
+      <stop offset="0" stop-color="#8fd3cc" />
+      <stop offset="0.55" stop-color="#3f7fb3" />
+      <stop offset="1" stop-color="#2a5a8c" />
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#f6efe0" />
+  <g filter="url(#wobble)">
+    <path d="M2 42 L14 21 L21 30 L31 11 L42 29 L49 22 L62 42 Z" fill="#a397bd" />
+    <path d="M31 11 L35 18 L32 17 L29 19 Z M14 21 L17 26 L13 25 Z" fill="#fbf7ee" />
+    <path d="M2 42 L10 32 L18 36 L27 29 L37 35 L47 30 L62 42 Z" fill="#5f8a55" />
+    <ellipse cx="32" cy="47" rx="23" ry="11" fill="url(#lake)" />
+    <path d="M9 38 C 15 33, 19 39, 25 34 S 36 31, 41 35" fill="none" stroke="#d2532c" stroke-width="2" stroke-linecap="round" />
+  </g>
+</svg>
