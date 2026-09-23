@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tahoe Trails</title>
+    <meta name="description" content="A watercolor, isometric map of the hiking and mountain bike trails in the Lake Tahoe Basin." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛰️</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,500..800,100,1&family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <canvas id="scene"></canvas>
+    <div id="labels" aria-hidden="true"></div>
+    <div id="tooltip" role="tooltip"></div>
+
+    <aside id="panel">
+      <header>
+        <h1><span class="wash"></span>Tahoe <em>Trails</em></h1>
+        <p id="stats" class="sub">Loading trails…</p>
+      </header>
+      <div class="search-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="M15.5 15.5 21 21" /></svg>
+        <input id="search" type="search" placeholder="Find a trail…" autocomplete="off" spellcheck="false" aria-label="Search trails" />
+        <kbd>/</kbd>
+        <button id="search-clear" class="icon-btn" aria-label="Clear search" hidden>✕</button>
+      </div>
+      <div class="filters" role="group" aria-label="Filter trails">
+        <button data-filter="all" class="on">All</button>
+        <button data-filter="hike">🥾 Hike</button>
+        <button data-filter="bike">🚵 Bike</button>
+        <span id="result-count"></span>
+      </div>
+      <div class="plan-toggle">
+        <button id="plan-btn" aria-pressed="false">
+          <span class="plan-label"><b>✦ 2026 trail plan</b><small>What the Forest Service approved to build</small></span>
+          <span class="switch" aria-hidden="true"></span>
+        </button>
+        <div id="plan-groups" role="group" aria-label="Planned changes to show" hidden>
+          <button data-plan="new" class="on"><i class="dot new"></i>New trails</button>
+          <button data-plan="designate"><i class="dot designate"></i>E-bike changes</button>
+          <button data-plan="decommission" class="on"><i class="dot decommission"></i>Removals</button>
+        </div>
+      </div>
+      <ul id="trail-list"></ul>
+    </aside>
+
+    <section id="card" aria-live="polite"></section>
+
+    <div id="legend">
+      <div><span class="swatch bike"></span>Open to bikes &amp; hikers</div>
+      <div><span class="swatch hike"></span>Foot traffic only</div>
+      <div><span class="swatch basin"></span>Lake Tahoe Basin</div>
+    </div>
+    <div id="legend-plan" hidden>
+      <div><span class="swatch plan-ebike"></span>New · bikes &amp; e-bikes</div>
+      <div><span class="swatch plan-nonmoto"></span>New · non-motorized</div>
+      <div><span class="swatch plan-moto"></span>New · motorcycle</div>
+      <div><span class="swatch plan-designate"></span>Newly open to e-bikes</div>
+      <div><span class="swatch plan-decommission"></span>To be removed</div>
+      <div><span class="th-mark">P</span>New trailhead</div>
+    </div>
+
+    <nav id="controls" aria-label="Map controls">
+      <div id="compass" title="North"><div id="compass-needle"><span>N</span></div></div>
+      <button id="btn-left" title="Rotate left (Q)">⟲</button>
+      <button id="btn-right" title="Rotate right (E)">⟳</button>
+      <button id="btn-in" title="Zoom in (+)">+</button>
+      <button id="btn-out" title="Zoom out (−)">−</button>
+      <button id="btn-home" title="Reset view (H)">⌂</button>
+    </nav>
+
+    <p id="hint">Drag to pan · scroll to zoom · right-drag to spin</p>
+    <footer id="attribution">
+      Trails © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &amp;
+      <a href="https://data.fs.usda.gov/geodata/edw/datasets.php" target="_blank" rel="noopener">USDA Forest Service</a> · Basin: USGS WBD ·
+      Elevation: AWS Terrain Tiles. Check trail conditions and closures before heading out.
+    </footer>
+
+    <div id="loading"><div class="blob"></div><p>Mixing the paints…</p></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
