@@ -1006,3 +1006,43 @@ h1 .wash {
   font-weight: 500;
   color: var(--ink-soft);
 }
+
+/* ---------- clean view (U): just the map, for screenshots */
+#panel,
+#builders,
+#legend,
+#legend-plan,
+#controls,
+#hint,
+#attribution {
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
+}
+body.clean :is(#panel, #builders, #card, #legend, #legend-plan, #controls, #hint, #attribution, #tooltip) {
+  opacity: 0 !important;
+  visibility: hidden;
+  pointer-events: none;
+}
+#toast {
+  position: fixed;
+  left: 50%;
+  top: 24px;
+  transform: translate(-50%, -8px);
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper-2);
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.25s,
+    transform 0.25s;
+  z-index: 60;
+}
+#toast.visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}

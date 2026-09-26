@@ -11,7 +11,7 @@ The [`docs/`](docs/README.md) folder covers what the app is for and how to use i
 
 ## Using it
 
-- **Drag** to pan, **scroll** to zoom, **right-drag** to spin (or `Q` / `E` to rotate 90°, `H` to go home)
+- **Drag** to pan, **scroll** to zoom, **right-drag** to spin (or `Q` / `E` to rotate 90°, `H` to go home, `U` to hide the interface for screenshots)
 - **Click a trail** on the map, or press `/` to search. Arrow keys + Enter pick from the results.
 - Filter to hiking or biking trails. Links like `#trail=Corral%20Trail` open straight to a trail.
 

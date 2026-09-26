@@ -14,8 +14,11 @@ The screen has three main parts:
 | Zoom | Scroll (zooms toward the cursor) | `+` / `−`, or the **+** / **−** buttons |
 | Spin the view | Right-drag | `Q` / `E` rotate 90°, or the ⟲ ⟳ buttons |
 | Go back to the whole basin | | `H`, or the ⌂ button |
+| Hide the interface (for screenshots) | | `U` toggles it back and forth |
 
 The compass above the buttons always points north, which helps after you've spun the view.
+
+**Clean view.** Press `U` to hide every panel, button, and legend and leave just the painted map and its labels. That's handy for screenshots. Hovering doesn't highlight trails in this mode. A trail you've already selected stays highlighted; press `Esc` first if you don't want it. Press `U` again to bring everything back.
 
 ## Finding a trail
 

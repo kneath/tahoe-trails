@@ -289,6 +289,7 @@ async function main() {
   function updatePick() {
     if (!pickDirty || !pointer) return;
     pickDirty = false;
+    if (document.body.classList.contains('clean')) return;
     const id = trailLayer.pick(camera, pointer.x, pointer.y, width, height, 9);
     setHover(id);
     if (id !== null) {
@@ -309,8 +310,23 @@ async function main() {
     if (e.key === '=' || e.key === '+') zoomBy(1.5);
     if (e.key === '-' || e.key === '_') zoomBy(1 / 1.5);
     if (e.key === 'h' || e.key === 'H') home();
+    if ((e.key === 'u' || e.key === 'U') && !e.metaKey && !e.ctrlKey && !e.altKey) toggleCleanView();
     if (e.key === 'Escape') select(null);
   });
+
+  // "Clean view" hides every panel and control, leaving only the painted map and its labels,
+  // for screenshots. A note flashes briefly so it's clear how to get the interface back.
+  const toast = document.getElementById('toast')!;
+  let toastTimer = 0;
+  function toggleCleanView() {
+    const clean = document.body.classList.toggle('clean');
+    setHover(null);
+    tooltip.classList.remove('visible');
+    toast.textContent = clean ? 'Interface hidden · press U to bring it back' : 'Interface restored';
+    toast.classList.add('visible');
+    clearTimeout(toastTimer);
+    toastTimer = window.setTimeout(() => toast.classList.remove('visible'), 1600);
+  }
 
   // --- render loop (only redraws when something changed)
   let dirty = true;
